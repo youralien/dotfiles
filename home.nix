@@ -27,6 +27,8 @@ in
     autosuggestion.enable = true;      # ghost text from history
     syntaxHighlighting.enable = true;  # commands turn green when valid
     initContent = ''
+      # Prepend existing PATH additions
+      [ -f ~/.zshrc.local ] && source ~/.zshrc.local
       bindkey '^f' autosuggest-accept
     '';
     shellAliases = {
@@ -52,6 +54,8 @@ in
       cmd_duration.format = "[$duration]($style) ";
     };
   };
+
+
 
   # Edit-in-place: the real file stays in my repo, ~/.config just points at it.
   home.file.".config/wezterm".source =

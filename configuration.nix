@@ -28,6 +28,10 @@
   nix-homebrew = {
     enable = true;
     inherit user;
+    autoMigrate = true;
+  };
+  home-manager = {
+    backupFileExtension = "backup";
   };
   homebrew = {
     enable = true;
