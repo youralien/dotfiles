@@ -1,4 +1,4 @@
-{ user, ... }:
+{ pkgs, user, ... }:
 
 {
   # Determinate already manages the Nix daemon, so nix-darwin shouldn't.
@@ -31,7 +31,12 @@
     autoMigrate = true;
   };
   home-manager = {
-    backupFileExtension = "backup";
+    # Timestamped backups: a fixed ".backup" suffix aborts activation once a
+    # previous backup exists ("would be clobbered by backing up").
+    backupCommand = pkgs.writeShellScript "hm-backup" ''
+      [ -e "$1" ] || [ -L "$1" ] || exit 0
+      mv -v "$1" "$1.hm-backup-$(date +%Y%m%d%H%M%S)"
+    '';
   };
   homebrew = {
     enable = true;
@@ -40,6 +45,8 @@
     onActivation.extraFlags = [ "--force" ];
     brews = [
       "herdr"
+      "libyaml"     # needed by rbenv-built Rubies (psych)
+      "pkg-config"
     ];
     casks = [
       "wezterm"

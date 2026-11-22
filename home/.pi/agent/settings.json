@@ -1,18 +1,19 @@
 {
-  "images": {
-    "blockImages": false
+  "lastChangelogVersion": "1.5.2",
+  "defaultProvider": "strata",
+  "defaultModel": "qwen3.8-flash-next-iq3_s",
+  "defaultThinkingLevel": "medium",
+  "compaction": {
+    "enabled": true,
+    "reserveTokens": 17768,
+    "keepRecentTokens": 4000
   },
-  "terminal": {
-    "showImages": false
-  },
-  "hideThinkingBlock": true,
-  "quietStartup": true,
-  "theme": "rose-pine-moon",
-  "steeringMode": "all",
-  "followUpMode": "all",
-  "collapseChangelog": true,
   "packages": [
     "npm:pi-web-access@0.14.0",
     "npm:@ryan_nookpi/pi-extension-codex-fast-mode@0.2.6"
-  ]
+  ],
+  "theme": "rose-pine-moon",
+  "steeringMode": "all",
+  "followUpMode": "all",
+  "hideThinkingBlock": true
 }
